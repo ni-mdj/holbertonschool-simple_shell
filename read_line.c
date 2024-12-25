@@ -1,34 +1,27 @@
-
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "shell.h"
 
 /**
-* read_line - Simple shell to read and print user input
+* read_line - Simple shell to read user input
 *
-* Return: Always 0
+* Return: Pointer to the user input string
 */
 
-int read_line(void)
+char *read_line(void)
 {
-	char *line;
+	char *line = NULL;
 
-	size_t size;
+	size_t size = 0;
 	ssize_t nread;
 
-	line = NULL;
-	size = 0;
-	while (1)
-	{
-		display_shell();
-		nread = getline(&line, &size, stdin);
+	nread = getline(&line, &size, stdin);
 
-		if (nread == -1)
-		{
-			break;
-		}
-		printf("%s", line);
+	if (nread == -1) /* Handle EOF (Ctrl+D) */
+	{
+		free(line);
+		exit(0);
 	}
-	free(line);
-	return (0);
+	return (line); /* Return the input for execution */
 }

@@ -7,5 +7,6 @@
 
 void display_shell(void)
 {
-	printf("#cisfun$ ");
+	printf("#cisfunc$ ");
+	fflush(stdout);
 }

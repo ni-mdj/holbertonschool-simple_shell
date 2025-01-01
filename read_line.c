@@ -14,11 +14,8 @@ char *read_line(void)
 	char *line = NULL;
 
 	size_t size = 0;
-	ssize_t nread;
 
-	nread = getline(&line, &size, stdin);
-
-	if (nread == -1) /* Handle EOF (Ctrl+D) */
+	if (getline(&line, &size, stdin) == -1) /* Handle EOF (Ctrl+D) */
 	{
 		free(line);
 		exit(0);

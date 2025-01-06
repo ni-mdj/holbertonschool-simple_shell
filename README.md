@@ -7,11 +7,11 @@ A basic UNIX command interpreter written in C
 This project is a simple implementation of a UNIX shell. It allows the execution of basic commands and offers features such as process management and basic input/output redirection
 
 ##Features
-<Execution of simple commands
-<Path handling (PATH)
-<Child process management
-<Basic input/output redirection
-<Signal handling (Ctrl+C)
+Execution of simple commands
+Path handling (PATH)
+Child process management
+Basic input/output redirection
+Signal handling (Ctrl+C)
 
 ##Compilation
 ###To compile the shell, use the following command

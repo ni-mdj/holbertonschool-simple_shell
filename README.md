@@ -26,9 +26,9 @@ echo "/bin/ls" | ./hsh
 
 ##Examples
 $ ./hsh
-($) /bin/ls
+/bin/ls
 hsh main.c shell.c
-($) exit
+exit
 $
 
 ##Authors

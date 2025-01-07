@@ -1,6 +1,6 @@
 ![simple_shell](image.png)
 
-[document simple shell](vscode-local:/c%3A/Users/selve/Downloads/simple%20shell%20noor%20mina.pdf)
+![document simple shell](/document-simple-shell-mina-noor/simple_shell_noor_mina.pdf)
 
 ![description](https://img.shields.io/badge/description-1.9.0-yellow)
 

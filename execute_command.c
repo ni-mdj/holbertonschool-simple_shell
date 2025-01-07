@@ -13,9 +13,10 @@ extern char **environ;
 void print_env(void)
 {
     char **env = environ;
-
-    while (*env) {
+    while (*env)
+    {
         printf("%s\n", *env);
+
         env++;
     }
 }
@@ -36,25 +37,27 @@ char *find_command_in_path(char *command)
 
     // COPY DU PATH POUR PAS LE MODIFIER, erreur si on fait pas a ca la deuxieme commande tapé
     path_copy = strdup(path);
-    if (!path_copy) {
+    if (!path_copy)
+    {
         perror("strdup");
         return NULL;
     }
-
     // Parcourir chaque PATH 
     dir = strtok(path_copy, ":");
-    while (dir != NULL) {
+    while (dir != NULL)
+    {
         snprintf(full_path, sizeof(full_path), "%s/%s", dir, command);
 
-        if (access(full_path, X_OK) == 0) {
+        if (access(full_path, X_OK) == 0)
+        {
             free(path_copy);
             return strdup(full_path); // Return PATH FIND 
         }
         dir = strtok(NULL, ":");
     }
 
-    free(path_copy); 
-    return NULL;     
+    free(path_copy);
+    return NULL;
 }
 
 /**
@@ -116,11 +119,9 @@ int execute_command(char *command)
     } else if (pid > 0) { // Processus p
         // Wait end of child process
         wait(&status);
-    } else { // Fail fork 
+    } else { // Fail fork
         perror("fork");
     }
-
-	
 
     free(path); // Libérer la mémoire allouée pour len
     return (0);

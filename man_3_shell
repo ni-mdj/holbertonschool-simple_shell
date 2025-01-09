@@ -1,51 +1,57 @@
+# SIMPLE SHELL MANUAL PAGE
 
-_PRINTF                 Custom Library Manual
-
-NAME
-	_printf - custom implementation of the printf function,
-							formats and displays data to standard output.
-SYNOPSIS
-	#include "main.h"
-	int _printf(const char *format, ...);
+## NAME
+                    hsh - Simple shell
 
 DESCRIPTION
-	The _printf() function produces output according to the format string that is
-	specified. The format string can contain ordinary characters (which are copied
-	unchanged to the output stream) and conversion specifications (which are
-	replaced by the values of the additional arguments).
-	The following conversion specifiers are supported:
+	hsh is a simple shell that reads user input and executes commands.
+       It supports basic internal commands like 'cd', 'ls', 'exit', and external
+       commands found in the system `PATH`. It can be run in both interactive
+       and non-interactive modes.
 
-	%d or %i
-			Signed decimal integer.
-	%s
-			String of characters.
-	%c
-			Character.
-	%%
-			A literal percent sign.
+       The shell reads a command, forks a process to run it, and then waits
+       for the process to finish.
 
-	The arguments are converted according to the format specified. If there are not
-	enough arguments for the format specifiers, the behavior is undefined.
+## INTERN COMMANDS
+	cd [directory]
+           Changes the current directory. If no directory is specified,
+           it changes to the user's home directory.
 
-RETURN VALUE
-	The _printf() function returns the total number of characters written, excluding
-	the null byte used to end output to strings. If an output error occurs, a negative
-	value is returned.
+## UTIL FUNCTIONS
+       - display_shell: Displays a prompt for the user to enter a command. It typically represents the interactive shell.
+       - execute_command: Executes a command by searching for its path in PATH, then launches a child process using execve. It also handles special commands like exit and env.
+       - read_line: Reads a line of input entered by the user, usually using fgets or getline to capture standard input.
+       - tokenize_command: Splits a command line into tokens (arguments) separated by spaces or special characters, typically using strtok, to prepare for execution.
+       - execute_fork: Creates a child process using fork to execute a command. The child process uses execve to run the command, while the parent process waits for the child to finish.
+       - main: The main function of the program, typically responsible for initialization, displaying the prompt, managing the command input loop, and executing commands until exit.
 
-ERRORS
-	If an invalid conversion specifier is encountered or if an insufficient number of
-	arguments are provided for the format string, an error occurs.
+## COMPILATION
+       gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
-EXAMPLES
-	#include "main.h"
-	int main() {
-		_printf("Hello, %s!\n", "world");  // Output: Hello, world
-		_printf("Number: %d\n", 74);        // Output: Number: 74
-		return (0);
-	}
-COLOPHON
-	This manual page documents the _printf function as part of a custom library.
+## ERRORS
+	If a command fails, the shell shows an error message:
+           $ echo "qwerty" | ./hsh
+           ./hsh: 1: qwerty: not found
 
-AUTHORS
+## FILES
+       /etc/passwd
+           User information used by `cd`.
+
+       /etc/environment
+           Environment variables for the shell.
+
+## EXAMPLES
+	 Example: Change directory
+        
+           hsh> cd /home/user
+           hsh> pwd
+           /home/user
+
+       Example: Run a command
+
+           hsh> ls
+           (lists files in the current directory)
+
+## AUTHORS
 		Noor Medjahed
 		Mina Sinani

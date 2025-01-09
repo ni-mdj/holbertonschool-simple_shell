@@ -4,16 +4,15 @@
                     hsh - Simple shell
 
 DESCRIPTION
-	hsh is a simple shell that reads user input and executes commands.
+       hsh is a simple shell that reads user input and executes commands.
        It supports basic internal commands like 'cd', 'ls', 'exit', and external
        commands found in the system `PATH`. It can be run in both interactive
        and non-interactive modes.
 
        The shell reads a command, forks a process to run it, and then waits
        for the process to finish.
-
-## INTERN COMMANDS
-	cd [directory]
+.INTERN COMMANDS
+       cd [directory]
            Changes the current directory. If no directory is specified,
            it changes to the user's home directory.
 
@@ -29,7 +28,7 @@ DESCRIPTION
        gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 ## ERRORS
-	If a command fails, the shell shows an error message:
+       If a command fails, the shell shows an error message:
            $ echo "qwerty" | ./hsh
            ./hsh: 1: qwerty: not found
 
@@ -41,8 +40,8 @@ DESCRIPTION
            Environment variables for the shell.
 
 ## EXAMPLES
-	 Example: Change directory
-        
+        Example: Change directory
+
            hsh> cd /home/user
            hsh> pwd
            /home/user
@@ -53,5 +52,6 @@ DESCRIPTION
            (lists files in the current directory)
 
 ## AUTHORS
-		Noor Medjahed
-		Mina Sinani
+              Noor Medjahed
+              Mina Sinani
+

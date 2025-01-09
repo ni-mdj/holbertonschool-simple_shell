@@ -1,119 +1,80 @@
-![simple_shell](image.png)
-![document simple shell](/document-simple-shell-mina-noor/simple_shell_noor_mina.pdf)
-![description](https://img.shields.io/badge/description-1.9.0-yellow)
-![features](https://img.shields.io/badge/features-MA-black)
-![compilation](https://img.shields.io/badge/compilation-MA-green)
-![usage](https://img.shields.io/badge/usage-MA-blue)
-![examples](https://img.shields.io/badge/examples-MA-red)
-![authors](https://img.shields.io/badge/authors-MA-pink)
-![license](https://img.shields.io/badge/license-MA-orange)
-# Simple Shell
-A basic UNIX command interpreter written in C.
-# Table of Contents
-## Introduction
-Overview of Unix Shell and Its Importance.
-Purpose of the Project.
-### Background Information
-History of Unix and the Thompson Shell.
-Ken Thompson and the Creation of Unix.
-The First Version of the UNIX Shell.
-The B Programming Language.
-Development and Influence on C.
-### Learning Objectives
-Key Concepts to Understand.
-What is a Shell?
-Understanding PID and PPID.
-Environment Manipul.
-### Requirements
-General Guidelines for Coding
-Compilation Instructions
-Style and Documentation Requirements
-### Output Specifications
-Expected Behavior in Interactive Mode
-Expected Behavior in Non-Interactive Mode
-### Allowed Functions and System Calls
-List of Functions to Use
-Explanation of Each Function's Purpose
-### Testing and Validation
-Testing Methodology
-Importance of Collaborative Testing
-### Conclusion
-Summary of Key Takeaways
-Future Directions for Learning
-## Project Overview
-This project aims to develop a custom Unix shell, inspired by the original Thompson shell created by Ken Thompson in 1971. The shell will function similarly to the standard sh shell, providing users with a command-line interface to execute commands, manage processes, and manipulate the environment.
-## Objectives
-By the end of this project, participants will be able to
-### Understand Unix History:
- Explain the design and implementation of the original Unix operating system and identify its key contributors, particularly Ken Thompson.
-### Shell Functionality:
- Describe how a shell operates, including process management, input/output redirection, and command execution.
-### Process Identification:
- Define what a process identifier (PID) and parent process identifier (PPID) are, and how they are utilized in Unix systems.
-### Environment Manipulation:
- Learn how to manipulate the environment of the current process using environment variables like PATH.
-System Calls vs. Functions: Differentiate between functions and system calls, and understand when to use each in programming.
-### Process Creation:
-Create new processes using system calls such as fork and execve.
-### EOF Handling:
-Recognize what EOF (end-of-file) signifies in a command-line context.
-## Requirements
-Participants are expected to adhere to specific coding standards and guidelines:
-Use editors such as vi, vim, or emacs.
-Code must be compiled on Ubuntu 20.04 LTS using gcc with strict flags for error checking.
-All files should end with a newline, and a README.md file must be included at the project root.
-Code should follow the Betty style guide to ensure readability and maintainability.
-The shell must be free of memory leaks and have no more than five functions per file.
-## Authorized Functions and Macros
-For this project, the following functions and macros are authorized for use in your shell implementation. These functions are essential for process management, input/output operations, and string manipulation within a Unix environment.
-### String Manipulation:
-All functions from string.h (e.g., strlen, strcpy, strcat, etc.)
-## Man Page
-### NAME:
-hsh - a simple Unix shell implementation in C
-hsh is a command-line interpreter that allows users to execute commands and manage processes in a Unix-like environment, replicating the behavior of the standard Unix shell (sh).
-### Interactive Mode:
- Start the shell with:
-./hsh
-### Non-Interactive Mode:
- Pipe commands into the shell:
- echo "/bin/ls" | ./hsh
-### EXIT STATUS:
-Returns "0" on success.
-Returns "1" on failure.
-## Description
-This project is a simple implementation of a UNIX shell. It allows the execution of basic commands and offers features such as process management and basic input/output redirection.
-## Features
-Execution of simple commands
-Path handling (PATH)
-Child process management
-Basic input/output redirection
-Signal handling (Ctrl+C)
-## Compilation
-### To compile the shell, use the following command
+
+# <span style="color:orange;"> THE SIMPLE SHELL</span>
+A simple shell is a basic software program that provides a text-based interface between the user and the operating system, allowing users to interact with the computer by typing commands directly.
+
+- [ THE SIMPLE SHELL](#-the-simple-shell)
+- [ Function](#-function)
+  - [Functions and Definitions](#functions-and-definitions)
+  - [Compilation command](#compilation-command)
+  - [Requirements](#requirements)
+  - [Usage Examples](#usage-examples)
+- [Man Page - Command to exectue Man page:](#man-page---command-to-exectue-man-page)
+- [Testing - Memory Check with Valgrind:](#testing---memory-check-with-valgrind)
+- [Flowchart](#flowchart)
+- [Authors](#authors)
+# <span style="color:yellow;"> Function</span>
+## Functions and Definitions
+  - <span style="color:brown;"> Display_shell:</span> *Displays a prompt for the user to enter a command. It typically represents the interactive shell.*
+ - <span style="color:brown;"> Execute_command:</span> *Executes a command by searching for its path in PATH, then launches a child process using execve. It also handles special commands like exit and env.*
+- <span style="color:brown;"> Read_line:</span> *Reads a line of input entered by the user, usually using fgets or getline to capture standard input.*
+- <span style="color:brown;"> Tokenize_command:</span> *Splits a command line into tokens (arguments) separated by spaces or special characters, typically using strtok, to prepare for execution.*
+ - <span style="color:brown;"> Execute_fork:</span> *Creates a child process using fork to execute a command. The child process uses execve to run the command, while the parent process waits for the child to finish.*
+- <span style="color:brown;"> Main:</span> *The main function of the program, typically responsible for initialization, displaying the prompt, managing the command input loop, and executing commands until exit.*
+## <span style="color:green;">Compilation command</span>
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-## Usage
-### Launch the shell in interactive mode
-./hsh
-### Or use it in non-interactive mode
-echo "/bin/ls" | ./hsh
-## Examples
-$ ./hsh
-/bin/ls
-hsh main.c shell.c
-exit
-$
-## Authors
-MINS2405
-ni-mdj
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## <span style="color:pink;">Requirements</span>
+Allowed editors: vi, vim, emacs
+All your files will be compiled on Ubuntu 20.04 LTS using gcc, 
+Using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+All your files should end with a new line
+A README.md file, at the root of the folder of the project is mandatory
+Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+Your shell should not have any memory leaks
+No more than 5 functions per file
+All your header files should be include guarded
+Use system calls only when you need to (why?)
+
+## <span style="color:cyan;">Usage Examples</span>
+**PID (Process Identifier) and PPID (Parent Process Identifier)**
+Are fundamental concepts in operating systems for managing processes.
+1. <span style="color:red;">PID</span> (Process Identifier): _A PID is a unique number given to each running program on a
+computer. It helps the system track and manage different processes, like giving each running program its own “name tag”_
+2. <span style="color:red;">PIDD</span> (Parent Process Identifier): _A PPID is the number (ID) of the parent process that started another process. It shows which process created it. For example, if a program starts another program, the first one is the “parent”, and its ID the PPID of the second one._
+PID
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+int main(void)
+{
+pid_t pid = fork(); // Create a new process
+if (pid < 0)
+{
+// Error occurred during fork
+perror("Error during fork");
+exit(EXIT_FAILURE);
+}
+else if (pid == 0)
+{
+// Code executed by the child process
+printf("I am the child process. My PID is %ld and my parent's PID is %ld.\n", (long)getpid(),
+(long)getppid());
+} else
+ {
+// Code executed by the parent process
+printf("I am the parent process. My PID is %ld and my child's PID is %ld.\n", (long)getpid(),
+(long)pid);
+}
+return( EXIT_SUCCESS);
+}
+# <span style="color:magenta;">Man Page - Command to exectue Man page:</span>
+
+# <span style="color:yellowgreen;">Testing - Memory Check with Valgrind:</span>
+
+ valgrind --leak-check=full --track-origins=yes ./hsh
 
 
+# <span style="color:purple;">Flowchart</span>
+# <span style="color:aqua;">Authors</span>
 
-
-
-
-
-
-
+- **MINA SINANI** - [MINS2405](https://github.com/MINS2405)
+- **MEDJAHED NOOR** - [ni-mdj](https://github.com/ni-mdj/holbertonschool-simple_shell)

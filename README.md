@@ -3,6 +3,7 @@
 A simple shell is a basic software program that provides a text-based interface between the user and the operating system, allowing users to interact with the computer by typing commands directly.
 
 - [ THE SIMPLE SHELL](#-the-simple-shell)
+- [Requirements](#requirements)
 - [ Function](#-function)
   - [Allowed functions and system calls+](#allowed-functions-and-system-calls)
     - [1. String functions (`string.h`)](#1-string-functions-stringh)
@@ -13,13 +14,26 @@ A simple shell is a basic software program that provides a text-based interface 
     - [6. File status (`sys/stat.h`)](#6-file-status-sysstath)
     - [7. File system (`unistd.h`)](#7-file-system-unistdh)
     - [8. Misc functions](#8-misc-functions)
-  - [Functions and Definitions](#functions-and-definitions)
+- [Functions used for my simple shell](#functions-used-for-my-simple-shell)
   - [Compilation command](#compilation-command)
-  - [Requirements](#requirements)
-  - [Usage Examples](#usage-examples)
+- [Usage Examples](#usage-examples)
+- [*PID (Process Identifier) and PPID (Parent Process Identifier)*\*](#pid-process-identifier-and-ppid-parent-process-identifier)
+  - [Exemples :](#exemples-)
 - [Testing ](#testing-)
 - [Flowchart](#flowchart)
 - [Authors](#authors)
+#  <span style="color:pink;">Requirements</span>
+- Allowed editors: vi, vim, emacs
+- All your files will be compiled on Ubuntu 20.04 LTS using gcc, 
+- Using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+- All your files should end with a new line
+- A README.md file, at the root of the folder of the project is mandatory
+- Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+- Your shell should not have any memory leaks
+- No more than 5 functions per file
+- All your header files should be include guarded
+- Use system calls only when you need to (why?) 
+
 # <span style="color:yellow;"> Function</span>
 ## Allowed functions and system calls+
 
@@ -91,7 +105,7 @@ A simple shell is a basic software program that provides a text-based interface 
 
 
 
-## Functions and Definitions
+# Functions used for my simple shell
   - <span style="color:brown;"> Display_shell:</span> *Displays a prompt for the user to enter a command. It typically represents the interactive shell.*
  - <span style="color:brown;"> Execute_command:</span> *Executes a command by searching for its path in PATH, then launches a child process using execve. It also handles special commands like exit and env.*
 - <span style="color:brown;"> Read_line:</span> *Reads a line of input entered by the user, usually using fgets or getline to capture standard input.*
@@ -100,51 +114,35 @@ A simple shell is a basic software program that provides a text-based interface 
 - <span style="color:brown;"> Main:</span> *The main function of the program, typically responsible for initialization, displaying the prompt, managing the command input loop, and executing commands until exit.*
 ## <span style="color:green;">Compilation command</span>
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-## <span style="color:pink;">Requirements</span>
-Allowed editors: vi, vim, emacs
-All your files will be compiled on Ubuntu 20.04 LTS using gcc, 
-Using the options -Wall -Werror -Wextra -pedantic -std=gnu89
-All your files should end with a new line
-A README.md file, at the root of the folder of the project is mandatory
-Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
-Your shell should not have any memory leaks
-No more than 5 functions per file
-All your header files should be include guarded
-Use system calls only when you need to (why?)
 
-## <span style="color:cyan;">Usage Examples</span>
-**PID (Process Identifier) and PPID (Parent Process Identifier)**
+# <span style="color:cyan;">Usage Examples</span>
+| Command         | Output/Action                                                    |
+|-----------------|------------------------------------------------------------------|
+| `$ pwd`         | `/workspaces/conteneur/holbertonschool-simple_shell`             |
+| `$ exit`        | (Exits the shell, returning to previous prompt)                  |
+| `$ ls -la`      | ```                                                            |
+|                 | drwxr-xr-x 1 vscode vscode  4096 .                            |
+|                 | drwxrwxrwx 1 root   root    4096 ..                           |
+|                 | -rw-r--r-- 1 vscode vscode   900                                |
+|                 | -rw-r--r-- 1 vscode vscode   572                                |
+|                 | -rw-r--r-- 1 vscode vscode   707                                |
+|                 | drwxr-xr-x 1 vscode vscode  4096 .git                         |
+|                 | -rwxr-xr-x 1 vscode vscode 17424                               |
+|                 | -rw-r--r-- 1 vscode vscode   829                                |
+|                 | -rw-r--r-- 1 vscode vscode     0                                |
+|                 | -rw-r--r-- 1 vscode vscode   933                                |
+|                 | -rw-r--r-- 1 vscode vscode  1037                                |
+|                 | -rw-r--r-- 1 vscode vscode   702                                |
+|                 | ```                                                              |
+
+
+# *PID (Process Identifier) and PPID (Parent Process Identifier)**
 Are fundamental concepts in operating systems for managing processes.
 1. <span style="color:red;">PID</span> (Process Identifier): _A PID is a unique number given to each running program on a
 computer. It helps the system track and manage different processes, like giving each running program its own “name tag”_
 2. <span style="color:red;">PIDD</span> (Parent Process Identifier): _A PPID is the number (ID) of the parent process that started another process. It shows which process created it. For example, if a program starts another program, the first one is the “parent”, and its ID the PPID of the second one._
-PID
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-int main(void)
-{
-pid_t pid = fork(); // Create a new process
-if (pid < 0)
-{
-// Error occurred during fork
-perror("Error during fork");
-exit(EXIT_FAILURE);
-}
-else if (pid == 0)
-{
-// Code executed by the child process
-printf("I am the child process. My PID is %ld and my parent's PID is %ld.\n", (long)getpid(),
-(long)getppid());
-} else
- {
-// Code executed by the parent process
-printf("I am the parent process. My PID is %ld and my child's PID is %ld.\n", (long)getpid(),
-(long)pid);
-}
-return( EXIT_SUCCESS);
-}
-
+## Exemple :
+![alt text](<ppid pid mina sinani.png>)
 # <span style="color:yellowgreen;">Testing </span>
 ![alt text](<Capture d’écran 2025-01-10 à 00.51.15.png>)
 

@@ -4,15 +4,93 @@ A simple shell is a basic software program that provides a text-based interface 
 
 - [ THE SIMPLE SHELL](#-the-simple-shell)
 - [ Function](#-function)
+  - [Allowed functions and system calls+](#allowed-functions-and-system-calls)
+    - [1. String functions (`string.h`)](#1-string-functions-stringh)
+    - [2. Memory management (`stdlib.h`, `malloc.h`)](#2-memory-management-stdlibh-malloch)
+    - [3. I/O functions (`stdio.h`)](#3-io-functions-stdioh)
+    - [4. File functions (`dirent.h`, `fcntl.h`)](#4-file-functions-direnth-fcntlh)
+    - [5. Process management (`process`, `fork`, `signal`)](#5-process-management-process-fork-signal)
+    - [6. File status (`sys/stat.h`)](#6-file-status-sysstath)
+    - [7. File system (`unistd.h`)](#7-file-system-unistdh)
+    - [8. Misc functions](#8-misc-functions)
   - [Functions and Definitions](#functions-and-definitions)
   - [Compilation command](#compilation-command)
   - [Requirements](#requirements)
   - [Usage Examples](#usage-examples)
-- [Man Page - Command to exectue Man page:](#man-page---command-to-exectue-man-page)
 - [Testing ](#testing-)
 - [Flowchart](#flowchart)
 - [Authors](#authors)
 # <span style="color:yellow;"> Function</span>
+## Allowed functions and system calls+
+
+### 1. String functions (`string.h`)
+| **Function**  | **Description**                               |
+|---------------|-----------------------------------------------|
+| `strtok`      | Splits a string into tokens.                  |
+
+### 2. Memory management (`stdlib.h`, `malloc.h`)
+| **Function**  | **Description**                               |
+|---------------|-----------------------------------------------|
+| `malloc`      | Allocates memory.                             |
+| `free`        | Frees memory.                                 |
+| `_exit`       | Exits without cleanup.                       |
+
+### 3. I/O functions (`stdio.h`)
+| **Function**  | **Description**                               |
+|---------------|-----------------------------------------------|
+| `fflush`      | Flushes a stream.                             |
+| `fprintf`     | Formats and writes to a stream.               |
+| `printf`      | Formats and writes to standard output.        |
+| `sprintf`     | Formats and writes to a string.               |
+| `putchar`     | Prints a character.                           |
+| `perror`      | Prints error message.                         |
+| `getcwd`      | Gets current directory.                       |
+| `getline`     | Reads a line from a stream.                   |
+| `isatty`      | Checks if a descriptor is a terminal.         |
+
+### 4. File functions (`dirent.h`, `fcntl.h`)
+| **Function**  | **Description**                               |
+|---------------|-----------------------------------------------|
+| `open`        | Opens a file.                                 |
+| `close`       | Closes a file.                                |
+| `read`        | Reads from a file.                            |
+| `write`       | Writes to a file.                             |
+| `opendir`     | Opens a directory.                            |
+| `readdir`     | Reads a directory entry.                      |
+| `closedir`    | Closes a directory.                           |
+
+### 5. Process management (`process`, `fork`, `signal`)
+| **System Call** | **Description**                              |
+|-----------------|----------------------------------------------|
+| `fork`          | Creates a new process.                       |
+| `execve`        | Replaces the current process image.          |
+| `exit`          | Exits the program.                           |
+| `getpid`        | Gets process ID.                             |
+| `kill`          | Sends a signal to a process.                 |
+| `signal`        | Sets signal handling.                        |
+| `wait`          | Waits for child process termination.         |
+| `waitpid`       | Waits for a specific child process.          |
+
+### 6. File status (`sys/stat.h`)
+| **Function**  | **Description**                               |
+|---------------|-----------------------------------------------|
+| `stat`        | Gets file status.                             |
+| `lstat`       | Gets file status (symlinks treated differently). |
+| `fstat`       | Gets file status using file descriptor.      |
+
+### 7. File system (`unistd.h`)
+| **System Call** | **Description**                              |
+|-----------------|----------------------------------------------|
+| `access`        | Checks file access permissions.              |
+| `chdir`         | Changes the current directory.               |
+
+### 8. Misc functions
+| **Function**  | **Description**                               |
+|---------------|-----------------------------------------------|
+| `getpid`      | Returns the process ID.                       |
+
+
+
 ## Functions and Definitions
   - <span style="color:brown;"> Display_shell:</span> *Displays a prompt for the user to enter a command. It typically represents the interactive shell.*
  - <span style="color:brown;"> Execute_command:</span> *Executes a command by searching for its path in PATH, then launches a child process using execve. It also handles special commands like exit and env.*
@@ -66,7 +144,6 @@ printf("I am the parent process. My PID is %ld and my child's PID is %ld.\n", (l
 }
 return( EXIT_SUCCESS);
 }
-# <span style="color:magenta;">Man Page - Command to exectue Man page:</span>
 
 # <span style="color:yellowgreen;">Testing </span>
 ![alt text](<Capture d’écran 2025-01-10 à 00.51.15.png>)

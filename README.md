@@ -70,9 +70,10 @@ return( EXIT_SUCCESS);
 
 # <span style="color:yellowgreen;">Testing </span>
 ![alt text](<Capture d’écran 2025-01-10 à 00.51.15.png>)
+
 # <span style="color:purple;">Flowchart</span>
 ![alt text](<Image PNG.png>)
-# <span style="color:aqua;">Authors</span>
 
+# <span style="color:aqua;">Authors</span>
 - **MINA SINANI** - [MINS2405](https://github.com/MINS2405)
 - **MEDJAHED NOOR** - [ni-mdj](https://github.com/ni-mdj/holbertonschool-simple_shell)

@@ -9,7 +9,7 @@ A simple shell is a basic software program that provides a text-based interface 
   - [Requirements](#requirements)
   - [Usage Examples](#usage-examples)
 - [Man Page - Command to exectue Man page:](#man-page---command-to-exectue-man-page)
-- [Testing - Memory Check with Valgrind:](#testing---memory-check-with-valgrind)
+- [Testing ](#testing-)
 - [Flowchart](#flowchart)
 - [Authors](#authors)
 # <span style="color:yellow;"> Function</span>
@@ -68,12 +68,10 @@ return( EXIT_SUCCESS);
 }
 # <span style="color:magenta;">Man Page - Command to exectue Man page:</span>
 
-# <span style="color:yellowgreen;">Testing - Memory Check with Valgrind:</span>
-
- valgrind --leak-check=full --track-origins=yes ./hsh
-
-
+# <span style="color:yellowgreen;">Testing </span>
+![alt text](<Capture d’écran 2025-01-10 à 00.51.15.png>)
 # <span style="color:purple;">Flowchart</span>
+![alt text](<Image PNG.png>)
 # <span style="color:aqua;">Authors</span>
 
 - **MINA SINANI** - [MINS2405](https://github.com/MINS2405)
